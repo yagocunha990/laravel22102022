@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Note;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -12,7 +12,9 @@ class NoteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('todolist.index');
+        $notes = Note::get();
+
+        return view('todolist.index',compact('notes'));
     }
 
     /**
@@ -31,9 +33,12 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+      $note =new Note;
+      $note->title = $request->title;
+      $note->textnotes = $request->textnotes;
+      $note->save();
+      return redirect()->route('todolist.index');
     }
 
     /**

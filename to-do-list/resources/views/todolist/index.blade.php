@@ -20,17 +20,18 @@
 
 
                 <div class="contact-form">
-                    <form action="">
+                    <form action="{{ route('todolist.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-12 mb-4">
-                                <input class="form-control form-control-lg fs-6 border-0 shadow-sm" type="text" placeholder="Título" name="" id="">
+                                <input class="form-control form-control-lg fs-6 border-0 shadow-sm" type="title" placeholder="Título" name="title" id="">
                             </div>
                            
                         </div>
                        
                         <div class="row">
                             <div class="col-lg-12 mb-4">
-                                <textarea class="form-control form-control-lg fs-6 border-0 shadow-sm" rows="5" placeholder="Sua Anotação"></textarea>
+                                <textarea class="form-control form-control-lg fs-6 border-0 shadow-sm" rows="5" name="textnotes" placeholder="Sua Anotação"></textarea>
                             </div>
                         </div>
 
@@ -43,7 +44,8 @@
             </div>
 
             </div>
-
+            {{-- inicio for --}}
+            @foreach($notes as $note)
             <div class="col-md-8">
                 <div class="contact-item d-flex mb-3">
                     <div class="icon fs-4 text-primary">
@@ -51,15 +53,16 @@
                     </div>
 
                     <div class="text ms-3">
-                        <h3 class="fs-5">Nota1</h3>
-                        <p class="text-muted m">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis laborum similique eaque accusamus laudantium minus neque iusto, 
-                            a omnis sapiente at porro dolor iste eligendi, harum ipsam dignissimos sequi ipsum.</p>
+                        <h3 class="fs-5">{{$note->title }}</h3>
+                        <p class="text-muted m">{{$note->textnotes }}</p>
                             <a href="#" class="btn  btn-warning btn-sm ">Alterar</a>
                             <a href="#" class="btn  btn-danger btn-sm ">Deletar</a>
 
                     </div>
                 </div>
             </div>
+            @endforeach
+            {{-- FIM  for --}}
            
         </div>
     </div>
