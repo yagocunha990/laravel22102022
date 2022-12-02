@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="text ms-3">
-                            <h3 class="fs-5"><a class="text-primary text-decoration-none" href="#">Relatório Simples de Vendas</a></h3>
+                            <h3 class="fs-5"><a class="text-primary text-decoration-none" href="{{asset('/relatorio/relatorio_simples_de_vendas')  }}">Relatório Simples de Vendas</a></h3>
                             <p class="text-muted m">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur optio quod sunt reprehenderit consectetur? Perferendis rem esse fugiat inventore placeat. Ut quidem aliquam in rem aperiam blanditiis sit placeat accusamus?</p>
                         </div>
                     </div>
