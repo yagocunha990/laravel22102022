@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,21 @@ class UpdateRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
-    {
+    public function rules(){
         return [
-            //
+            'name'=>'required|string|max:50',
+            'description'=>'nullable|string|max:250',
+        ];
+    }
+
+    public function messages(){
+        return [
+            'name.required'=>'Este campo é Obrigatorio.',
+            'name.string'=>'Este valor não estar correto.',
+            'name.max'=>'O Valor permitido é 50 caracteres',
+            
+            'description.string='>'Este valor não estar correto.',
+            'description.max'=>'O Valor permitido é 255 caracteres',                       
         ];
     }
 }
