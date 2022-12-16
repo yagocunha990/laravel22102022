@@ -3,82 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Provider;
+use App\Http\Request\Product\StoreRequest;
+use App\Http\Request\Product\UpdateRequest;
 
-class ProductController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+class ProductController extends Controller{
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function index(){
+        $products = Product::get();
+        return view('admin.product.index', compact('products'));
+     }
+ //////////////////////////////////////
+ public function create(){
+    $categories = Category::get();
+    $providers = Provider::get();
+     return view('admin.product.create',compact('categories','providers'));
+  }
+ /////////////////////////////////////
+     public function store (StoreRequest $request){
+         Product::create($request->all());
+         return redirect()->route('products.index');
+     }
+     ////////////////////////////////////////////////////////////////
+     public function show (Product $product){
+         return view('admin.product.show', compact('product'));
+     }
+ ////////////////////////////////
+     public function edit(Product $product){
+        $categories = Category::get();
+        $providers = Provider::get();
+         return view('admin.product.show', compact('product','providers','categories'));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+     }
+ /////////////////////////////////////
+     public function update(UpdateRequest $request, Product $product){
+         $product->update($request->all());
+         return redirect()->route('products.index');
+     }
+ ////////////////////////////////
+     public function destroy(Product $product){
+         $product->delete();
+         return redirect()->route('products.index');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
