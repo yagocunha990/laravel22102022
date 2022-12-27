@@ -14,7 +14,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return "Bem vindo a pagina de produtos";
+        $products = Product::all();
+        return view('product',compact('products'));
     }
 
     /**
