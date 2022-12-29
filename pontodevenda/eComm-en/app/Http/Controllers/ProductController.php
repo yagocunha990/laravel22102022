@@ -14,7 +14,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $products = Product::all();
+        //$products = Product::where('id','1')->get();
+        $products = Product::get();
         return view('product',compact('products'));
     }
 

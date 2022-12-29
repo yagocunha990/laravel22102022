@@ -12,6 +12,13 @@
         height: 500px;
         padding-top: 100px;
     }
+
+    img.slider-img{
+        height: 400px !important;
+    }
+    .custom-product{
+      height: 600px ;
+    }
 </style>
 
 </head>
@@ -22,6 +29,6 @@
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 </body>
 </html>
