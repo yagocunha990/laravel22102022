@@ -10,7 +10,7 @@
 
                     <div class="carousel-item {{ $key == 0 ? 'active':'' }} ">
                     <img src="{{ $product->gallery }}" class="d-block w-100 slider-img" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class=" slider-text  carousel-caption d-none d-md-block">
                     <h5>{{ $product->name }}</h5>
                     <p>{{ $product->description}}</p>
                     </div>
@@ -28,6 +28,20 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+
+      <div class="trending-wrapper">
+        <h3>Treding Products</h3>
+        @foreach ($products as $product )
+
+        <div class="trening-item ">
+                    <img src="{{ $product->gallery }}" class="trending-image" alt="...">
+                    <div class="">
+                    <h5>{{ $product->name }}</h5>
+
+                    </div>
+                    </div>
+        @endforeach
+        </div>
 
 </div>
 
