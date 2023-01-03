@@ -9,11 +9,13 @@
             @foreach ($products as $key => $product)
 
                     <div class="carousel-item {{ $key == 0 ? 'active':'' }} ">
-                    <img src="{{ $product->gallery }}" class="d-block w-100 slider-img" alt="...">
-                    <div class=" slider-text  carousel-caption d-none d-md-block">
-                    <h5>{{ $product->name }}</h5>
-                    <p>{{ $product->description}}</p>
+                        <a href="detail/{{$product->id  }}">
+                            <img src="{{ $product->gallery }}" class="d-block w-100 slider-img" alt="...">
+                            <div class=" slider-text  carousel-caption d-none d-md-block">
+                            <h5>{{ $product->name }}</h5>
+                            <p>{{ $product->description}}</p>
                     </div>
+                        </a>
                     </div>
           @endforeach
 
@@ -34,11 +36,13 @@
         @foreach ($products as $product )
 
         <div class="trening-item ">
-                    <img src="{{ $product->gallery }}" class="trending-image" alt="...">
-                    <div class="">
-                    <h5>{{ $product->name }}</h5>
+                <a href="detail/{{$product->id  }}">
+                        <img src="{{ $product->gallery }}" class="trending-image" alt="...">
+                        <div class="">
+                        <h5>{{ $product->name }}</h5>
 
-                    </div>
+                        </div>
+                </a>
                     </div>
         @endforeach
         </div>

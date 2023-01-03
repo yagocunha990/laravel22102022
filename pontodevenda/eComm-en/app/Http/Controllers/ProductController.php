@@ -18,6 +18,10 @@ class ProductController extends Controller
         $products = Product::get();
         return view('product',compact('products'));
     }
+    ////////////////////////////////////////////////
+    public function detail($id){
+        $data =  Product::find($id);
+    }
 
     /**
      * Show the form for creating a new resource.
