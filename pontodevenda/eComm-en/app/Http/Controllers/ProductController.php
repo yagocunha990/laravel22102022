@@ -20,7 +20,8 @@ class ProductController extends Controller
     }
     ////////////////////////////////////////////////
     public function detail($id){
-        $data =  Product::find($id);
+        $product =  Product::find($id);
+        return view('detail', compact('product'));
     }
 
     /**
