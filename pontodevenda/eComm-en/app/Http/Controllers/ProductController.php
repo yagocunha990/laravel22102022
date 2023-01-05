@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+
+use Illuminate\Htpp\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -88,5 +90,10 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    //////////////////////////////cart///////////////////////
+    function addToCart(Request $req){
+        return 'hello';
     }
 }
