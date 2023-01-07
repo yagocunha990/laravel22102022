@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-
-use Illuminate\Htpp\Request;
+use App\Models\Cart;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Session;
 
 class ProductController extends Controller
 {
@@ -94,6 +95,22 @@ class ProductController extends Controller
 
     //////////////////////////////cart///////////////////////
     function addToCart(Request $req){
-        return 'hello';
+        if ($req->session()->has('user')) {
+          $cart = new Cart();
+          $cart->user_id = $req->session()->get('user')['id'];
+          $cart->product_id = $req->product_id;
+          $cart->save();
+          return redirect('/');
+        } else {
+            return redirect('/login');
+        }
+
+    }
+
+    ////////////////
+    static function cartItem()
+    {
+      $userId=Session::get('user')['id'];
+     return Cart::where('user_id',$userId)->count();
     }
 }
