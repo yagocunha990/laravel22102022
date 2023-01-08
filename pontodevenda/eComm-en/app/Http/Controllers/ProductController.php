@@ -102,7 +102,7 @@ class ProductController extends Controller
           $cart->save();
           return redirect('/');
         } else {
-            return redirect('/login');
+
         }
 
     }
@@ -110,7 +110,10 @@ class ProductController extends Controller
     ////////////////
     static function cartItem()
     {
-      $userId=Session::get('user')['id'];
-     return Cart::where('user_id',$userId)->count();
+        $userId=Session::get('user')['id'];
+        return Cart::where('user_id',$userId)->count();
+
+
+
     }
 }
