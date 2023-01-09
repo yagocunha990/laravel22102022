@@ -11,7 +11,7 @@ $total= ProductController::cartItem();
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="/">Loja Virtual</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,6 +27,21 @@ $total= ProductController::cartItem();
           <li class="nav-item">
             <a class="nav-link" href="#">Carrinho({{ $total }})</a>
           </li>
+          @if(Session::has('user'))
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{Session::get('user')['name']  }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+
+            </ul>
+          </li>
+          @else
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          @endif
 
         </ul>
         <form class="d-flex">

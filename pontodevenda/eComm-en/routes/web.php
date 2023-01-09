@@ -22,7 +22,13 @@ Route::get('/login', function () {
 //USER CONTROLLER
 Route::post("/login",[UserController::class,'login']);
 
+//LOGOUT
+Route::get("/logout",[UserController::class,'logout']);
+
 //PRODUCT CONTROLLER
 Route::get("/",[ProductController::class,'index']);
 Route::get("/detail/{id}",[ProductController::class,'detail']);
 Route::post("/add_to_cart",[ProductController::class,'addToCart']);
+
+
+
