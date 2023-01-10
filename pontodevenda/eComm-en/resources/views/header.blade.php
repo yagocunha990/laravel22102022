@@ -25,7 +25,7 @@ $total= ProductController::cartItem();
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Carrinho({{ $total }})</a>
+            <a class="nav-link" href="/cartlist">Carrinho({{ $total }})</a>
           </li>
           @if(Session::has('user'))
           <li class="nav-item dropdown">

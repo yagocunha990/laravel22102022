@@ -15,20 +15,22 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/login', function () {
-    return view('login');
-});
+
 
 //USER CONTROLLER
 Route::post("/login",[UserController::class,'login']);
 
-//LOGOUT
+//LOGOUT E LOGIN
 Route::get("/logout",[UserController::class,'logout']);
+Route::get('/login', function () {
+    return view('login');
+});
 
 //PRODUCT CONTROLLER
 Route::get("/",[ProductController::class,'index']);
 Route::get("/detail/{id}",[ProductController::class,'detail']);
 Route::post("/add_to_cart",[ProductController::class,'addToCart']);
+Route::get("/cartlist",[ProductController::class,'cartList']);
 
 
 
