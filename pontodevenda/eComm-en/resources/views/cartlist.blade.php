@@ -12,7 +12,7 @@
 
                     <h4>Resultado dos Produtos</h4>
                     @foreach ($products as $product )
-                             <div class=" row searched-item ">
+                             <div class=" row searched-item cart-list-devider">
                                     <div class="col-sm-3">
                                         <a href="detail/{{$product->id  }}">
                                             <img src="{{ $product->gallery }}" class="trending-image" alt="...">
@@ -32,7 +32,7 @@
                                     </div>
 
                                     <div class="col-sm-3">
-                                       <button class="btn btn-warning">Remover do Carrinho</button>
+                                       <a href="/removecart/{{$product->cart_id  }}" class="btn btn-warning">Remover do Carrinho</a>
                                     </div>
 
 

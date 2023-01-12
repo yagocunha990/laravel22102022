@@ -29,8 +29,11 @@ Route::get('/login', function () {
 //PRODUCT CONTROLLER
 Route::get("/",[ProductController::class,'index']);
 Route::get("/detail/{id}",[ProductController::class,'detail']);
+///PRODUCT CART
 Route::post("/add_to_cart",[ProductController::class,'addToCart']);
 Route::get("/cartlist",[ProductController::class,'cartList']);
+Route::get("/removecart/{id}",[ProductController::class,'removeCart']);
+
 
 
 
