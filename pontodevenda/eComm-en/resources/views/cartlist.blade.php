@@ -11,6 +11,7 @@
                 <div class="trending-wrapper">
 
                     <h4>Resultado dos Produtos</h4>
+                    <a class="btn btn-success" href="/ordernow">Compre Agora</a> <br><br>
                     @foreach ($products as $product )
                              <div class=" row searched-item cart-list-devider">
                                     <div class="col-sm-3">
@@ -39,6 +40,8 @@
                                 </div>
                     @endforeach
                     </div>
+
+                   
 
                 </div>
 
