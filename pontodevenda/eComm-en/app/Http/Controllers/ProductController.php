@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreProductRequest;
@@ -144,6 +145,17 @@ class ProductController extends Controller
          ->sum('products.price');
 
          return view('ordernow',['total'=>$total]);
+    }
+
+    ///////////////////////////////////////////
+    function orderPlace(Request $req){
+        $userId=Session::get('user')['id'];
+        $allCart = Cart::where('user_id',$userId)->get();
+
+        foreach ($allCart as $cart ) {
+
+        }
+        return $req->input();
     }
 
 

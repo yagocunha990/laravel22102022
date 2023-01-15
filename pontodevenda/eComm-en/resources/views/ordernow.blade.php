@@ -38,18 +38,19 @@
           </table>
 
           <div>
-            <form>
+            <form action="/orderplace" method="POST">
+                @csrf();
                 <div class="form-group">
 
-                  <textarea type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Digite seu Endereço"></textarea>
+                  <textarea name="address" class="form-control"  aria-describedby="emailHelp" placeholder="Digite seu Endereço"></textarea>
 
                 </div>
 
                 <div class="form-group">
                   <label for="pwd">Forma de Pagamento</label> <br> <br>
-                  <input type="radio"  name="payment"> <span>Pagamento Online</span><br> <br>
-                  <input type="radio"  name="payment"> <span>Pagamento EMI</span><br> <br>
-                  <input type="radio"  name="payment"> <span>Pagamento por Delivery</span><br> <br>
+                  <input type="radio" value="cash"  name="payment"> <span>Pagamento Online</span><br> <br>
+                  <input type="radio" value="cash"name="payment"> <span>Pagamento EMI</span><br> <br>
+                  <input type="radio" value="cash"name="payment"> <span>Pagamento por Delivery</span><br> <br>
                 </div>
 
 
