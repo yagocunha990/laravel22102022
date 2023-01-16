@@ -153,9 +153,18 @@ class ProductController extends Controller
         $allCart = Cart::where('user_id',$userId)->get();
 
         foreach ($allCart as $cart ) {
-
+            $order = new Order;
+            $order->product_id = $cart['product_id'];
+            $order->user_id = $cart['user_id'];
+            $order->status = "pending";
+            $order->payment_method = $req->payment;
+            $order->payment_status = "pending";
+            $order->address = $req->address;
+            $order->save();
+            Cart::where('user_id',$userId)->delete();
         }
-        return $req->input();
+        return redirect('/');
+
     }
 
 
