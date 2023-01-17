@@ -168,4 +168,15 @@ class ProductController extends Controller
     }
 
 
+    function myOrders(){
+        $orders=Session::get('user')['id'];
+        return DB::table('orders')
+         ->join('products','orders.product_id','=','products.id')
+         ->where('orders.user_id',$userId)
+         ->get();
+
+         return view('myorders',compact('orders'));
+    }
+
+
 }
