@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +19,7 @@ function create(){
 }
 
 ////////////////////////////
-public function store(Request $request){
+public function store(UserStoreRequest $request){
 
     $request->validate([
         'name' => 'required|max:255',
@@ -53,7 +53,8 @@ public function store(Request $request){
         }
     }
 
-    return $cpf;
+   // return $cpf;
+   return redirect()->back()->withSuccess('User Created sucessfully');
 
     //$cpf =
     //Produto::create([
