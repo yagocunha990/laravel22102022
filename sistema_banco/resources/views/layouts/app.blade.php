@@ -20,22 +20,20 @@
         <nav class="navbar navbar-expand-md navbar-light " >
             <a href="#" class="navbar-brand">
 
-            <span class="hidden"> Automaconn </span>
+            <span class="hidden"> Sistema Banco</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu" aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="toggleMobileMenu">
               <ul class=" navbar-nav  text-center">
                 <li>
-                  <a class="nav-link" href="/index">Usuários</a>
+                  <a class="nav-link" href="/create">Cadastrar Usuário</a>
                 </li>
 
                 <li>
-                  <a class="nav-link" href="">Certificados</a>
+                  <a class="nav-link" href="/index">Listagem de Usuários</a>
                 </li>
 
-                <li>
-                  <a class="nav-link" href="">Acessos</a>
-                </li>
+
               </ul>
             </div>
         </nav>

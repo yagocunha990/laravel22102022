@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Balance;
 use App\Http\Requests\UserStore;
 use App\Http\Requests\UserUpdate;
-
+use App\Http\Requests\BankDepSac;
+use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     /**
@@ -70,7 +72,7 @@ class UserController extends Controller
         $user->save();
 
 
-
+        return redirect()->route('users.create');
 
     }
 
@@ -148,4 +150,75 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index');
     }
+
+
+   public function bank_index(){
+    $users_bank = User::get();
+
+    return view('bank.index',compact('users_bank'));
+   }
+
+   public function cash_machine($id){
+    $user = User::find($id);
+    return view('bank.cash_machine', compact('user'));
+   }
+
+   public function dep($id){
+    $user_id = $id;
+    return view('bank.dep_page', compact('user_id'));
+   }
+
+   public function dep_fn(BankDepSac $request){
+    //request
+    //user_id
+     //value
+    $extract = "Valor depositado de: $request->value";
+     //model embaixo
+   // 'value',
+   //'extract',
+   //'user_id',
+
+
+    $balance = new Balance;
+    $balance->value = $request->value;
+    $balance->user_id = $request->user_id;
+    $balance->extract = $extract;
+    $balance->save();
+
+
+
+    return redirect()->route('bank.index');
+
+
+
+     }
+
+    public function ext($id){
+        $balance_ext = DB::table('balances')->where('user_id', $id)->get();
+        return view('bank.ext', compact('balance_ext'));
+            }
+
+    public function sac($id){
+        $user_id = $id;
+        return view('bank.sac_page', compact('user_id'));
+
+    }
+
+    public function sac_fn(BankDepSac $request){
+
+    $extract = "Valor Sacado : $request->value";
+
+
+
+   $balance = new Balance;
+   $balance->value = $request->value;
+   $balance->user_id = $request->user_id;
+   $balance->extract = $extract;
+   $balance->save();
+
+
+
+   return redirect()->route('bank.index');
+    }
+
 }
