@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserStore;
+use App\Http\Requests\UserUpdate;
 
 class UserController extends Controller
 {
@@ -44,7 +45,7 @@ class UserController extends Controller
 
      // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
     if (preg_match('/(\d)\1{10}/', $cpf)) {
-        return 'Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11';
+        return 'Sequencia de numeros repeditos';
     }
     // Faz o calculo para validar o CPF
     for ($t = 9; $t < 11; $t++) {
@@ -53,7 +54,7 @@ class UserController extends Controller
         }
         $d = ((10 * $d) % 11) % 10;
         if ($cpf[$c] != $d) {
-            return 'Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11';
+            return 'cpf não é valido';
         }
     }
 
@@ -90,7 +91,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        return 'edit';
+     $user = User::find($id);
+
+     return view('users.edit', compact('user'));
     }
 
     /**
@@ -100,9 +103,38 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(UserUpdate $request, $id){
+
+        //pega os dados informado do cpf
+         $cpf = $request->cpf ;
+
+     // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
+    if (preg_match('/(\d)\1{10}/', $cpf)) {
+        return 'Sequencia de numros repetidos';
+    }
+    // Faz o calculo para validar o CPF
+    for ($t = 9; $t < 11; $t++) {
+        for ($d = 0, $c = 0; $c < $t; $c++) {
+            $d += $cpf[$c] * (($t + 1) - $c);
+        }
+        $d = ((10 * $d) % 11) % 10;
+        if ($cpf[$c] != $d) {
+            return 'Cpf não é valido';
+        }
+    }
+
+
+    $user = User::find($id);
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->address = $request->address;
+    $user->cpf = $cpf;
+    $user-> account = $request-> account;
+    $user-> password = $request-> password;
+    $user->update();
+    return redirect()->route('users.index');
+
+
     }
 
     /**
@@ -111,8 +143,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }

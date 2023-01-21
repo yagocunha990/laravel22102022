@@ -32,7 +32,12 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->account }}</td>
                     <td><a class="btn btn-warning btn-sm" href="/edit/{{$user->id}}" role="button">Editar</a></td>
-                    <td><a class="btn btn-danger btn-sm" href="" role="button">Deletar</a></td>
+
+                    <form action="/destroy/{{ $user->id }}" method="POST">
+                        @csrf
+                        <td><button class="btn btn-danger btn-sm">Deletar</button></td>
+
+                    </form>
 
                   </tr>
                 </tbody>
