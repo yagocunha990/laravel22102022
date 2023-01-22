@@ -11,8 +11,8 @@
                 <div class="trending-wrapper">
 
                     <h4>Meus Pedidos</h4>
-                    <a class="btn btn-success" href="/ordernow">Compre Agora</a> <br><br>
-                    @foreach ($products as $product )
+
+                    @foreach ($orders as $product )
                              <div class=" row searched-item cart-list-devider">
                                     <div class="col-sm-3">
                                         <a href="detail/{{$product->id  }}">
@@ -25,16 +25,16 @@
                                         <a href="detail/{{$product->id  }}">
 
                                             <div class="">
-                                            <h2>{{ $product->name }}</h2>
-                                            <h5>{{ $product->description }}</h5>
+                                            <h2>Nome: {{ $product->name }}</h2>
+                                            <h5>Status do Delivery: {{ $product->status }}</h5>
+                                            <h5>Endereço: {{ $product->address }}</h5>
+                                            <h5>Status do Pagamento: {{ $product->payment_status}}</h5>
+                                            <h5>Metódo do Pagamento: {{ $product->payment_method}}</h5>
 
                                             </div>
                                     </a>
                                     </div>
 
-                                    <div class="col-sm-3">
-                                       <a href="/removecart/{{$product->cart_id  }}" class="btn btn-warning">Remover do Carrinho</a>
-                                    </div>
 
 
                                 </div>
